@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Russia2018.Android", "Russi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Russia2018.iOS", "Russia2018\Russia2018.iOS\Russia2018.iOS.csproj", "{8204EDB5-1FE9-4B7C-BBCC-8D532F4BCBC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Russia2018", "Russia2018\Russia2018\Russia2018.csproj", "{A2067C95-5D99-4EF5-B1FC-89918A8D6436}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Russia2018", "Russia2018\Russia2018\Russia2018.csproj", "{A2067C95-5D99-4EF5-B1FC-89918A8D6436}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -138,6 +138,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_PrefixTranslations = False
 		SolutionGuid = {C0C1A778-4EF5-42FD-A4A6-D6E4D9EA0624}
 	EndGlobalSection
 EndGlobal

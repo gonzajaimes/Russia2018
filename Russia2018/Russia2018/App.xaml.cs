@@ -1,17 +1,22 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+﻿
 namespace Russia2018
 {
+    using System;
+    using System.Threading.Tasks;
+    using Xamarin.Forms;
+    using Views;
+    using Helpers;
+    using ViewModels;
+    using Services;
+    using Models;
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+           this.MainPage = new LoginPage();
         }
 
         protected override void OnStart()
