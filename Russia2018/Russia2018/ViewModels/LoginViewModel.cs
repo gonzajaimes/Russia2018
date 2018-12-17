@@ -2,79 +2,92 @@
 namespace Russia2018.ViewModels
 {
     using GalaSoft.MvvmLight.Command;
+    using System.Windows.Input;
     using Services;
     using Views;
-    using System.Windows.Input;
     using Xamarin.Forms;
     using Helpers;
-    using System;
 
     public class LoginViewModel : BaseViewModel
     {
         #region Services
-        private ApiService apiservice;
-        private DataService dataservice;
-
+        private ApiService apiService;
+        private DataService dataService;
         #endregion
 
         #region Attributes
-        private string _password;
-        private bool _isRunning;
-        private bool _isEnabled;
-        private string _email;
+        private string email;
+        private string password;
+        private bool isRunning;
+        private bool isEnabled;
         #endregion
 
         #region Properties
         public string Email
         {
-            get { return _email; }
-            set { SetValue(ref _email, value); }
+            get { return this.email; }
+            set { SetValue(ref this.email, value); }
         }
+
         public string Password
         {
-            get { return _password; }
-            set { SetValue(ref _password, value); }
+            get { return this.password; }
+            set { SetValue(ref this.password, value); }
         }
+
+        public bool IsRunning
+        {
+            get { return this.isRunning; }
+            set { SetValue(ref this.isRunning, value); }
+        }
+
         public bool IsRemembered
         {
             get;
             set;
         }
-        public bool IsRunning
-        {
-            get { return _isRunning; }
-            set { SetValue(ref _isRunning, value); }
-        }
+
         public bool IsEnabled
         {
-            get { return _isEnabled; }
-            set { SetValue(ref _isEnabled, value); }
+            get { return this.isEnabled; }
+            set { SetValue(ref this.isEnabled, value); }
         }
-
-
         #endregion
 
         #region Constructors
         public LoginViewModel()
         {
-            this.apiservice = new ApiService();
-            this.dataservice = new DataService();
+            this.apiService = new ApiService();
+            this.dataService = new DataService();
+
             this.IsRemembered = true;
             this.IsEnabled = true;
-
         }
         #endregion
 
         #region Commands
+        public ICommand LoginFacebookComand
+        {
+            get
+            {
+                return new RelayCommand(LoginFacebook);
+            }
+        }
+
+        private async void LoginFacebook()
+        {
+            //TODO: Pending to implement
+            //await Application.Current.MainPage.Navigation.PushAsync(
+            //    new LoginFacebookPage());
+        }
+
         public ICommand LoginCommand
         {
             get
             {
                 return new RelayCommand(Login);
             }
-
         }
-
 
         private async void Login()
         {
@@ -85,8 +98,8 @@ namespace Russia2018.ViewModels
                     Languages.EmailValidation,
                     Languages.Accept);
                 return;
-
             }
+
             if (string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -94,12 +107,13 @@ namespace Russia2018.ViewModels
                     Languages.PasswordValidation,
                     Languages.Accept);
                 return;
-
             }
+
             this.IsRunning = true;
             this.IsEnabled = false;
 
-            var connection = await this.apiservice.CheckConnection();
+            var connection = await this.apiService.CheckConnection();
+
             if (!connection.IsSuccess)
             {
                 this.IsRunning = false;
@@ -109,14 +123,14 @@ namespace Russia2018.ViewModels
                     connection.Message,
                     Languages.Accept);
                 return;
-
             }
 
             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            var token = await this.apiservice.GetToken(
-                               apiSecurity,
-                               this.Email,
-                               this.Password);
+            var token = await this.apiService.GetToken(
+                apiSecurity,
+                this.Email,
+                this.Password);
+
             if (token == null)
             {
                 this.IsRunning = false;
@@ -140,19 +154,19 @@ namespace Russia2018.ViewModels
                 return;
             }
 
-            var user = await this.apiservice.GetUserByEmail(
-                               apiSecurity,
-                               "/api",
-                               "/Users/GetUserByEmail",
-                               token.TokenType,
-                               token.AccessToken,
-                               this.Email);
+            var user = await this.apiService.GetUserByEmail(
+                apiSecurity,
+                "/api",
+                "/Users/GetUserByEmail",
+                token.TokenType,
+                token.AccessToken,
+                this.Email);
 
-            var userLocal = Converter.ToUserLocal(user);
-            userLocal.Password = this.Password;
+            user.Password = this.Password;
+
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
-            mainViewModel.User = userLocal;
+            mainViewModel.User = user;
 
             if (this.IsRemembered)
             {
@@ -163,37 +177,20 @@ namespace Russia2018.ViewModels
                 Settings.IsRemembered = "false";
             }
 
-            //guardamos el usuario y token en persistencia al hacer Login.
-            this.dataservice.DeleteAllAndInsert(userLocal);
-            this.dataservice.DeleteAllAndInsert(token);
+            this.dataService.DeleteAllAndInsert(user);
+            this.dataService.DeleteAllAndInsert(token);
 
-            mainViewModel.Lands = new LandsViewModel();
+            await Application.Current.MainPage.DisplayAlert("Fuck Yeak!", "You're in", "Accetp");
 
-            Application.Current.MainPage = new MasterPage();
-            //await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
+            //mainViewModel.Lands = new LandsViewModel();
+            //Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;
             this.IsEnabled = true;
 
             this.Email = string.Empty;
             this.Password = string.Empty;
-
-
         }
-
-        public ICommand LoginFacebookComand
-        {
-            get
-            {
-                return new RelayCommand(LoginFacebook);
-            }
-        }
-
-        private async void LoginFacebook()
-        {
-            await Application.Current.MainPage.Navigation.PushAsync(new LoginFacebookPage());
-        }
-
 
         public ICommand RegisterCommand
         {
@@ -201,16 +198,14 @@ namespace Russia2018.ViewModels
             {
                 return new RelayCommand(Register);
             }
-
         }
 
         private async void Register()
         {
-            MainViewModel.GetInstance().Register = new RegisterViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+            //TODO: Implement
+            //MainViewModel.GetInstance().Register = new RegisterViewModel();
+            //await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
         #endregion
-
-
     }
 }

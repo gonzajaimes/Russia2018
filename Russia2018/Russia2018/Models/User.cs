@@ -20,7 +20,7 @@ namespace Russia2018.Models
 
         public string Telephone { get; set; }
 
-        public int? UserTypeId { get; set; }
+        public int UserTypeId { get; set; }
 
 
         public UserType UserType { get; set; }

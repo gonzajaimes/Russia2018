@@ -3,6 +3,7 @@
 namespace Russia2018.Models
 {
     using SQLite.Net.Attributes;
+    using System.Collections.Generic;
 
     public class UserLocal
     {
@@ -17,11 +18,13 @@ namespace Russia2018.Models
 
         public string Telephone { get; set; }
 
-        public string Password { get; set; }
-
         public string ImagePath { get; set; }
 
         public int UserTypeId { get; set; }
+
+        public byte[] ImageArray { get; set; }
+
+        public string Password { get; set; }
 
         public string ImageFullPath
         {
@@ -39,7 +42,7 @@ namespace Russia2018.Models
                         ImagePath.Substring(1));
                 }
 
-                return ImagePath;
+                return this.ImagePath;
 
             }
         }

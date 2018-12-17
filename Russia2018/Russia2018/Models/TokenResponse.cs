@@ -1,4 +1,4 @@
-﻿namespace RussiaX.Models
+﻿namespace Russia2018.Models 
 {
     using System;
     using Newtonsoft.Json;
