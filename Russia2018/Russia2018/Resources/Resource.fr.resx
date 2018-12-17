@@ -363,4 +363,7 @@
   <data name="ErrorChangingPassword" xml:space="preserve">
     <value>Le mot de passe ne peut pas être changé, veuillez essayer plus tard</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Veuillez patienter !</value>
+  </data>
 </root>

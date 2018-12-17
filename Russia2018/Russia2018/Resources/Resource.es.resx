@@ -363,4 +363,7 @@
   <data name="Test" xml:space="preserve">
     <value>Artículo de prueba:</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Por favor, espera...</value>
+  </data>
 </root>

@@ -655,6 +655,15 @@ namespace Russia2018.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Please wait ....
+        /// </summary>
+        public static string PleaseWait {
+            get {
+                return ResourceManager.GetString("PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Population:.
         /// </summary>
         public static string Population {
