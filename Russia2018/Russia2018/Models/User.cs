@@ -2,11 +2,10 @@
 namespace Russia2018.Models
 {
     using System.Collections.Generic;
-    using SQLite.Net.Attributes;
+  
 
     public class User
     {
-        [PrimaryKey]
         public int UserId { get; set; }
 
         public string FirstName { get; set; }

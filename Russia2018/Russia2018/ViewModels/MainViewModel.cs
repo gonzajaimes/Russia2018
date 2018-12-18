@@ -2,7 +2,7 @@
 
 namespace Russia2018.ViewModels
 {
-    using System.Collections.Generic;
+    
     using System.Collections.ObjectModel;
     using Helpers;
     using Models;
@@ -10,7 +10,7 @@ namespace Russia2018.ViewModels
     public class MainViewModel : BaseViewModel
     {
         #region Attibrutes
-        private User user;
+        private UserLocal user;
         #endregion
 
         #region Properties
@@ -26,7 +26,7 @@ namespace Russia2018.ViewModels
             set;
         }
 
-        public User User
+        public UserLocal User
         {
             get { return this.user; }
             set { SetValue(ref this.user, value); }

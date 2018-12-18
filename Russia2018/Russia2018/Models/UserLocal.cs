@@ -1,5 +1,5 @@
 ﻿
-//Copia de modelo User para usar localmente en BD SQL Light
+//Copia de modelo User para usar localmente en BD SQL Light para persistencia
 namespace Russia2018.Models
 {
     using SQLite.Net.Attributes;

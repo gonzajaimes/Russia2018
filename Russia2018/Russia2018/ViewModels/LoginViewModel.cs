@@ -163,10 +163,11 @@ namespace Russia2018.ViewModels
                 this.Email);
 
             user.Password = this.Password;
+            var userLocal = Transform.ToUserLocal(user);
 
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
-            mainViewModel.User = user;
+            mainViewModel.User = userLocal;
 
             if (this.IsRemembered)
             {
@@ -180,7 +181,7 @@ namespace Russia2018.ViewModels
             this.dataService.DeleteAllAndInsert(user);
             this.dataService.DeleteAllAndInsert(token);
 
-            await Application.Current.MainPage.DisplayAlert("Fuck Yeak!", "You're in", "Accetp");
+            await Application.Current.MainPage.DisplayAlert("Fuck Yeak!", "You're in", "Accept");
 
             //mainViewModel.Lands = new LandsViewModel();
             //Application.Current.MainPage = new MasterPage();

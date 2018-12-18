@@ -6,6 +6,7 @@ namespace Russia2018.Services
     using System.Linq;
     using Helpers;
 
+    //Class with methods to interact with local DB
     public class DataService
     {
         public bool DeleteAll<T>() where T : class

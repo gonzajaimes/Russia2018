@@ -16,6 +16,7 @@ namespace Russia2018.Helpers
     {
         private SQLiteConnection connection;
 
+        //Clase para gestionar la conexión a SQLite y manejo de persistencia en BD SQLite
         public DataAccess()
         {
             var config = DependencyService.Get<IConfig>();
