@@ -511,6 +511,15 @@ namespace Russia2018.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Matches.
+        /// </summary>
+        public static string Matches {
+            get {
+                return ResourceManager.GetString("Matches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Menu.
         /// </summary>
         public static string Menu {

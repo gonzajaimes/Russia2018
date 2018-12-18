@@ -169,22 +169,16 @@ namespace Russia2018.ViewModels
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
 
-            if (this.IsRemembered)
-            {
-                Settings.IsRemembered = "true";
-            }
-            else
-            {
-                Settings.IsRemembered = "false";
-            }
+            //Is the user remembered?
+            Settings.IsRemembered = this.IsRemembered.ToString();
 
+           //Save user and token in persistence
             this.dataService.DeleteAllAndInsert(user);
             this.dataService.DeleteAllAndInsert(token);
 
-            await Application.Current.MainPage.DisplayAlert("Fuck Yeak!", "You're in", "Accept");
-
-            //mainViewModel.Lands = new LandsViewModel();
-            //Application.Current.MainPage = new MasterPage();
+            
+            mainViewModel.Matches = new MatchesViewModel();
+            Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;
             this.IsEnabled = true;

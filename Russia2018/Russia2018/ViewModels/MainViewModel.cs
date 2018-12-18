@@ -39,6 +39,12 @@ namespace Russia2018.ViewModels
             get;
             set;
         }
+
+        public MatchesViewModel Matches
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors

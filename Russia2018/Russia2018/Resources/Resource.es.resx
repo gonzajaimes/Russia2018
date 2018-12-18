@@ -366,4 +366,7 @@
   <data name="PleaseWait" xml:space="preserve">
     <value>Por favor, espera...</value>
   </data>
+  <data name="Matches" xml:space="preserve">
+    <value>Partidos</value>
+  </data>
 </root>

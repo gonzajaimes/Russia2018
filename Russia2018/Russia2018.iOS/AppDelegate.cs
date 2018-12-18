@@ -27,6 +27,8 @@ namespace Russia2018.iOS
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTE4MzdAMzEzNjJlMzQyZTMwVXZhQ1BFQWVmWVl6N0pyUC9RaVB0WmVmSEdXN2NENStCM0hiUGl2YWdTST0=");
 
+            ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
+
             new SfBusyIndicatorRenderer();
 
             LoadApplication(new App());

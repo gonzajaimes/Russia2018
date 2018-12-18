@@ -362,5 +362,10 @@
         {
             get { return Resource.ErrorChangingPassword; }
         }
+
+        public static string Matches
+        {
+            get { return Resource.Matches; }
+        }
     }
 }

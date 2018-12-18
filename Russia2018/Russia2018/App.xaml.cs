@@ -19,11 +19,11 @@ namespace Russia2018
             internal set;
         }
 
-        //public static MasterPage Master
-        //{
-        //    get;
-        //    internal set;
-        //}
+        public static MasterPage Master
+        {
+            get;
+           internal set;
+        }
         #endregion
 
         #region Constructors
@@ -42,8 +42,8 @@ namespace Russia2018
                     var mainViewModel = MainViewModel.GetInstance();
                     mainViewModel.Token = token;
                     mainViewModel.User = user;
-                    //mainViewModel.Lands = new LandsViewModel();
-                    //Application.Current.MainPage = new MasterPage();
+                    mainViewModel.Matches = new MatchesViewModel();
+                    Application.Current.MainPage = new MasterPage();
                 }
                 else
                 {
@@ -67,6 +67,7 @@ namespace Russia2018
             }
         }
 
+        
         public static async Task NavigateToProfile(FacebookResponse profile)
         {
             if (profile == null)
