@@ -170,10 +170,19 @@ namespace Russia2018.ViewModels
             mainViewModel.User = userLocal;
 
             //Is the user remembered?
-            Settings.IsRemembered = this.IsRemembered.ToString();
+            // Settings.IsRemembered = this.IsRemembered.ToString();
 
-           //Save user and token in persistence
-            this.dataService.DeleteAllAndInsert(user);
+            if (this.IsRemembered)
+            {
+                Settings.IsRemembered = "true";
+            }
+            else
+            {
+                Settings.IsRemembered = "false";
+            }
+
+            //Save user and token in persistence
+            this.dataService.DeleteAllAndInsert(userLocal);
             this.dataService.DeleteAllAndInsert(token);
 
             

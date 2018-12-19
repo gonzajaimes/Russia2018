@@ -50,7 +50,7 @@ namespace Russia2018.ViewModels
         #region Constructors
         public MainViewModel()
         {
-            instance = this; // Singlenton
+            instance = this; // Singleton
             this.Login = new LoginViewModel();
             this.LoadMenu();
         }
@@ -87,7 +87,7 @@ namespace Russia2018.ViewModels
             {
                 Icon = "ic_insert_chart",
                 PageName = "StaticsPage",
-                Title = Languages.MyProfile,
+                Title = Languages.Stats,
             });
 
             this.Menus.Add(new MenuItemViewModel
