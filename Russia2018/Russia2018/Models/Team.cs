@@ -10,11 +10,24 @@
 
         public string ImagePath { get; set; }
 
-        public string ImageFullPath { get; set; }
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(ImagePath))
+                {
+                    return "noimage_team";
+                }
+
+                return string.Format(
+                    "https://russiaapi.azurewebsites.net{0}",
+                    ImagePath.Substring(1));
+            }
+        }
 
         public List<GroupTeam> GroupTeams { get; set; }
 
-        public List<Match> Locals { get; set; }
+        public List<Match> Homes { get; set; }
 
         public List<Match> Visitors { get; set; }
 

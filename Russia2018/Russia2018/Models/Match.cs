@@ -12,7 +12,7 @@ namespace Russia2018.Models
 
         public int GroupId { get; set; }
 
-        public int LocalId { get; set; }
+        public int HomeId { get; set; }
 
         public int VisitorId { get; set; }
 
@@ -26,7 +26,7 @@ namespace Russia2018.Models
 
         public Group Group { get; set; }
 
-        public Team Local { get; set; }
+        public Team Home { get; set; }
 
         public Team Visitor { get; set; }
 
