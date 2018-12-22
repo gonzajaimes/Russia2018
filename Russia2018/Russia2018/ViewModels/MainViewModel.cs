@@ -34,7 +34,19 @@ namespace Russia2018.ViewModels
         #endregion
 
         #region ViewModels
+        public ChangePasswordViewModel ChangePassword
+        {
+            get;
+            set;
+        }
+
         public LoginViewModel Login
+        {
+            get;
+            set;
+        }
+
+        public MyProfileViewModel MyProfile
         {
             get;
             set;

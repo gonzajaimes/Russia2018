@@ -29,22 +29,22 @@ namespace Russia2018.ViewModels
         private void Navigate()
         {
             //TODO: Implement
-            //App.Master.IsPresented = false;
+            App.Master.IsPresented = false;
 
-            //if (this.PageName == "LoginPage")
-            //{
-            //     Settings.IsRemembered = "false";
-            //     var mainViewModel = MainViewModel.GetInstance();
-            //     mainViewModel.Token = null;
-            //     mainViewModel.User = null;
-            //     Application.Current.MainPage = new NavigationPage(
-            //        new LoginPage());
-            //}
-            //else if (this.PageName == "MyProfilePage")
-            //{
-            //    MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
-            //    App.Navigator.PushAsync(new MyProfilePage());
-            //}
+            if (this.PageName == "LoginPage")
+            {
+                Settings.IsRemembered = "false";
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Token = null;
+                mainViewModel.User = null;
+                Application.Current.MainPage = new NavigationPage(
+                   new LoginPage());
+            }
+            else if (this.PageName == "MyProfilePage")
+            {
+                MainViewModel.GetInstance().MyProfile = new MyProfileViewModel();
+                App.Navigator.PushAsync(new MyProfilePage());
+            }
         }
         #endregion
     }
