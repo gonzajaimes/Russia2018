@@ -3,12 +3,14 @@
 
 namespace Russia2018.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using Russia2018.Helpers;
     using Russia2018.Models;
     using Russia2018.Services;
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using Xamarin.Forms;
 
     public class MatchesViewModel : BaseViewModel
@@ -24,15 +26,28 @@ namespace Russia2018.ViewModels
         private ObservableCollection<Match> _matches;
         private List<Match> myMatches;
         private bool _isRefreshing;
+        private string _filter;
 
         #endregion
 
         #region Properties
+
+        public string Filter
+        {
+            get { return _filter; }
+            set
+            {
+                this.SetValue(ref _filter, value);
+                this.Search();
+            }
+        }
+
         public bool IsRefreshing
         {
             get { return _isRefreshing; }
             set { this.SetValue(ref _isRefreshing, value); }
         }
+
 
         public ObservableCollection<Match> Matches
         {
@@ -59,11 +74,11 @@ namespace Russia2018.ViewModels
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSuccess)
             {
-               this.IsRefreshing = false;
-               await Application.Current.MainPage.DisplayAlert(
-                    Languages.Error,
-                    connection.Message,
-                    Languages.Accept);
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(
+                     Languages.Error,
+                     connection.Message,
+                     Languages.Accept);
                 return;
             }
 
@@ -81,7 +96,7 @@ namespace Russia2018.ViewModels
                      Languages.Error,
                      connection.Message,
                      Languages.Accept);
-                return;             
+                return;
             }
 
             this.myMatches = (List<Match>)response.Result;
@@ -90,6 +105,34 @@ namespace Russia2018.ViewModels
             this.IsRefreshing = false;
         }
 
+        #endregion
+
+        #region Commands
+
+        public ICommand RefreshCommand
+        {
+            get { return new RelayCommand(LoadMatches); }
+        }
+
+        public ICommand SearchCommand
+        {
+            get { return new RelayCommand(Search); }
+        }
+
+        private void Search()
+        {
+            //When the Filter is null we have to load the whole list
+            if (string.IsNullOrEmpty(this.Filter))
+            {
+                this.Matches = new ObservableCollection<Match>(this.myMatches);
+            }
+            else
+            {
+                this.Matches = new ObservableCollection<Match>(this.myMatches.Where(
+                    m => m.Home.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                         m.Visitor.Name.ToLower().Contains(this.Filter.ToLower())));
+            }
+        }
         #endregion
     }
 }
