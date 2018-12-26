@@ -24,6 +24,7 @@ namespace Russia2018.ViewModels
         #region Attributes
 
         private ObservableCollection<Match> _matches;
+        private ObservableCollection<Match> _playedMatches;
         private List<Match> myMatches;
         private bool _isRefreshing;
         private string _filter;
@@ -54,6 +55,14 @@ namespace Russia2018.ViewModels
             get { return _matches; }
             set { this.SetValue(ref _matches, value); }
         }
+
+        public ObservableCollection<Match> PlayedMatches
+        {
+            get { return _playedMatches; }
+            set { this.SetValue(ref _playedMatches, value); }
+        }
+
+
         #endregion
 
         #region Constructors
@@ -101,7 +110,8 @@ namespace Russia2018.ViewModels
 
             this.myMatches = (List<Match>)response.Result;
             this.myMatches.ForEach(m => m.DateTime = m.DateTime.ToLocalTime());
-            this.Matches = new ObservableCollection<Match>(this.myMatches);
+            this.Matches = new ObservableCollection<Match>(this.myMatches.Where(m => m.StatusMatchId == 1));
+            this.PlayedMatches = new ObservableCollection<Match>(this.myMatches.Where(m => m.StatusMatchId != 1));
             this.IsRefreshing = false;
         }
 
@@ -129,8 +139,13 @@ namespace Russia2018.ViewModels
             else
             {
                 this.Matches = new ObservableCollection<Match>(this.myMatches.Where(
-                    m => m.Home.Name.ToLower().Contains(this.Filter.ToLower()) ||
-                         m.Visitor.Name.ToLower().Contains(this.Filter.ToLower())));
+                    m => (m.Home.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                          m.Visitor.Name.ToLower().Contains(this.Filter.ToLower())) && 
+                          m.StatusMatchId == 1));
+                this.PlayedMatches = new ObservableCollection<Match>(this.myMatches.Where(
+                    m => (m.Home.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                          m.Visitor.Name.ToLower().Contains(this.Filter.ToLower())) &&
+                          m.StatusMatchId != 1));
             }
         }
         #endregion

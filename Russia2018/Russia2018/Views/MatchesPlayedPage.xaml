@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Russia2018.Views.MatchesPage"
+             x:Class="Russia2018.Views.MatchesPlayedPage"
              xmlns:i18n="clr-namespace:Russia2018.Helpers"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              BackgroundColor="Silver"
-             Title="{i18n:Translate PendingMatches}"
-             Icon="ic_action_pending">
+             Title="{i18n:Translate PlayedMatches}"
+             Icon="ic_action_stars">
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Matches}"
@@ -22,7 +22,7 @@
                 HasUnevenRows="true" 
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
-                ItemsSource="{Binding Matches}"
+                ItemsSource="{Binding PlayedMatches}"
                 SeparatorVisibility="Default"
                 SeparatorColor="Navy"
                 RefreshCommand="{Binding RefreshCommand}">

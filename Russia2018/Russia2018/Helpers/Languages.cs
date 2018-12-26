@@ -367,5 +367,17 @@
         {
             get { return Resource.Matches; }
         }
+        public static string CupProgramming
+        {
+            get { return Resource.CupProgramming; }
+        }
+        public static string PendingMatches
+        {
+            get { return Resource.PendingMatches; }
+        }
+        public static string PlayedMatches
+        {
+            get { return Resource.PlayedMatches; }
+        }
     }
 }

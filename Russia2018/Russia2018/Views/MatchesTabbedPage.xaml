@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:i18n="clr-namespace:Russia2018.Helpers"
+            xmlns:tabs="clr-namespace:Russia2018.Views"
+            x:Class="Russia2018.Views.MatchesTabbedPage"
+            BindingContext="{Binding Main, Source={StaticResource Locator}}"
+            Title="{i18n:Translate CupProgramming}">
+    <TabbedPage.Children>
+        <tabs:MatchesPage/>
+        <tabs:MatchesPlayedPage/>
+    </TabbedPage.Children> 
+</TabbedPage>

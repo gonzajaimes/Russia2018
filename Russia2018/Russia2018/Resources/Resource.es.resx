@@ -369,4 +369,13 @@
   <data name="Matches" xml:space="preserve">
     <value>Partidos</value>
   </data>
+  <data name="CupProgramming" xml:space="preserve">
+    <value>Programación de la Copa</value>
+  </data>
+  <data name="PendingMatches" xml:space="preserve">
+    <value>Partidos Pendientes</value>
+  </data>
+  <data name="PlayedMatches" xml:space="preserve">
+    <value>Partidos Jugados</value>
+  </data>  
 </root>
