@@ -1,15 +1,16 @@
-﻿using System;
-
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-
+﻿
 namespace Russia2018.Droid
 {
-    [Activity(Label = "Russia2018", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    using Android.App;
+    using Android.Content.PM;
+    using Android.OS;
+
+    [Activity(
+        Label = "Russia2018", 
+        Icon = "@drawable/ic_launcher", 
+        Theme = "@style/MainTheme", 
+        MainLauncher = false, 
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
