@@ -142,6 +142,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -187,6 +188,8 @@
     <BundleResource Include="Resources\Russia.png" />
     <BundleResource Include="Resources\ic_action_pending.png" />
     <BundleResource Include="Resources\ic_action_stars.png" />
+    <BundleResource Include="Resources\Splash.png" />
+    <BundleResource Include="Resources\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\facebook_logo.png" />
