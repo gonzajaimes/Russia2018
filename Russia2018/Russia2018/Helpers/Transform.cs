@@ -33,6 +33,6 @@
                 UserTypeId = user.UserTypeId,
                 ImageArray = imageArray,
             };
-        }
+        }  
     }
 }

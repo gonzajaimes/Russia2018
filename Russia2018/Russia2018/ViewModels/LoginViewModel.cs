@@ -168,6 +168,8 @@ namespace Russia2018.ViewModels
             var mainViewModel = MainViewModel.GetInstance();
             mainViewModel.Token = token;
             mainViewModel.User = userLocal;
+            mainViewModel.RegisterDevice();  //Este paso se implementó para registrar el dispositivo para notificaciones
+
 
             //Is the user remembered?
             // Settings.IsRemembered = this.IsRemembered.ToString();

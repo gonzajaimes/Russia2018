@@ -6,6 +6,8 @@ namespace Russia2018.ViewModels
     using System.Collections.ObjectModel;
     using Helpers;
     using Models;
+    using Russia2018.Interfaces;
+    using Xamarin.Forms;
 
     public class MainViewModel : BaseViewModel
     {
@@ -109,6 +111,12 @@ namespace Russia2018.ViewModels
                 Title = Languages.LogOut,
             });
         }
+        public void RegisterDevice()
+        {
+            var register = DependencyService.Get<IRegisterDevice>();
+            register.RegisterDevice();
+        }
+
         #endregion
     }
 }
